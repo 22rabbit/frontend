@@ -1,0 +1,14 @@
+aliyun-python-sdk-cdn==3.4.5
+aliyun-python-sdk-core==2.13.25
+aliyun-python-sdk-core-v3==2.13.11
+click==7.1.2
+Flask==1.1.2
+Flask-PyMongo==2.3.0
+Flask-WTF==0.14.3
+itsdangerous==1.1.0
+Jinja2==2.11.2
+jmespath==0.10.0
+MarkupSafe==1.1.1
+pymongo==3.11.0
+Werkzeug==1.0.1
+WTForms==2.3.3

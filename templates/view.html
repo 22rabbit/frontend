@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <meta name="csrf-token" content="{{ csrf_token() }}">#}
+    <!--<title>{{ device_name }}数据可视化</title>-->
+    <title>传感器节点数据</title>
+
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.3.0/echarts.min.js"></script>
+    <script src="{{ url_for('static', filename='packages/_ajax_.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='packages/layui/css/layui.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+
+    <style>
+        .header-box {
+            height: 50px;
+            display: block;
+            margin: 5px auto;
+            border: 1px #cccccc solid;
+            border-radius: 5px;
+        }
+        body{
+            background-image:url(../static/images/20.jpg);
+            background-repeat:no-repeat;
+            background-size:100% 180%;
+        }
+
+        .op-box {
+            margin: 5px auto;
+        }
+
+        .label {
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .title{
+            color: white;
+            font-family: 楷体;
+        }
+    </style>
+
+</head>
+<body>
+<div class="body-box">
+    <!--<h1 class="title">{{ device_name }}的数据展示</h1>-->
+    <h1 class="title">传感器{{ device_nickname }}数据</h1>
+
+    <div class="header-box">
+        <form action="" class="layui-form">
+            <div class="layui-form-item op-box">
+                <span>传感器系数：</span>
+                <div class="layui-inline" style="margin-left: -36px; margin-right: 0">
+                    <label class="layui-form-label label" for="" style="padding: 9px 0">k：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="params_k" value="1" placeholder="传感器系数k" style="width: 80%">
+                    </div>
+                </div>
+                <div class="layui-inline" style="margin-left: -36px; margin-right: 0">
+                    <label class="layui-form-label label" for="" style="padding: 9px 0">b：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="params_b" value="0" placeholder="传感器系数b" style="width: 80%">
+                    </div>
+                </div>
+                <div class="layui-inline" style="margin-left: -36px; margin-right: 0">
+                    <label for="" class="layui-form-label label" style="padding: 9px 0">电场数据：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="result-name" value="电场数据" placeholder="默认为'属性值'" style="width: 80%">
+                    </div>
+                </div>
+                <div class="layui-inline" style="margin-left: -28px; margin-right: 0">
+                    <div class="layui-input-inline">
+                        <button class="layui-btn" id="execute-btn">结果</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="visual-data-box">
+        <table class="layui-hide" id="data-table" data-name="{{ device_name }}" data-identifier="{{ identifier }}"></table>
+    </div>
+    <div class="visual-data-box">
+        <div id="data-graph" data-name="{{ device_name }}" data-identifier="{{ identifier}}"></div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='packages/layui/layui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/view.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+html, body {
+    margin: 0 auto;
+}
+
+.header {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 85%;
+}
+
+.header-box {
+    margin: 5px auto;
+    height: 50px;
+    width: 60%;
+}
+
+.add-box {
+    margin: 5px auto;
+    height: 50px;
+    width: 60%;
+}
+
+.add-box button {
+    float: right;
+}
+
+h1.header-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+div.bg-box {
+    margin: 10px auto;
+    width: 85%;
+}
+
+div.sm-box {
+    margin: 10px auto;
+    height: 80px;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    border: 1px #cccccc solid;
+    border-radius: 5px;
+}
+
+.title-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+.device-name {
+    font-size: 18px;
+}

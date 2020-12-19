@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <meta name="csrf-token" content="{{ csrf_token() }}">#}
+    <title>设备查看</title>
+
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='packages/_ajax_.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='packages/layui/css/layui.css') }}">
+
+    <style>
+        body{
+            background-image:url(../static/images/bj2.png);
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+
+        }
+
+        .header-title {
+            font-family: 楷体;
+            color: white;
+            {#font-size: ;#}
+        }
+
+        .title-name {
+            font-family: 楷体;
+            color: white;
+        }
+        .device-name {
+            font-family: 宋体;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-box">
+        <h1 class="header-title">分布式无线传感的直流三维空间合成电场测量系统</h1>
+    </div>
+
+    <div class="add-box">
+        <button type="button" class="layui-btn" id="add-device">添加传感器节点</button>
+    </div>
+</div>
+
+<div class="bg-box">
+
+    <!-- 这里的设备数据应该从数据库中获取 -->
+    {% for device in devices %}
+        <div class="sm-box" data-name="{{ device['device_name'] }}" data-identifier="{{ device['identifier'] }}">
+            <span class="title-name">传感器节点：</span><span class="device-name">{{ device['device_nickname'] }}</span>
+            <!--<span class="title-name">传感器节点：</span><span class="device-name">'节点1'</span>-->
+            <div class="layui-btn-group" style="margin-left: 150px;">
+                <button type="button" class="layui-btn view">传感器监控</button>
+                <button type="button" class="layui-btn edit" data-status="0">自动拖拽</button>
+                <button type="button" class="layui-btn deal">采集启停</button>
+                <button type="button" class="layui-btn freq-setting" data-freq="{{ device['frequency'] }}">采集设置</button>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="sm-box" data-name="" data-identifier="">
+        <span class="title-name">传感器节点：</span><span class="device-name">总传感器节点监控</span>
+        <!--<span class="title-name">传感器节点：</span><span class="device-name">'节点1'</span>-->
+        <div class="layui-btn-group" style="margin-left: 150px;">
+            <button type="button" class="layui-btn view-all" style="width: 200px">传感器监控</button>
+        </div>
+    </div>
+    <div id="temp-freq" data-freq="1KHz" style="display: none;"></div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='packages/layui/layui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/index2.js') }}"></script>
+<script type="text/javascript">
+    layui.use('form', function () {
+        var form = layui.form;
+    })
+</script>
+</body>
+</html>
